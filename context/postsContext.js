@@ -17,7 +17,7 @@ function postsReducer(state, action) {
       return newPosts;
     }
     case "deletePost": {
-      const newPosts = state.posts.filter((p) => p._id !== action.postId);
+      const newPosts = state.filter((p) => p._id !== action.postId);
       return newPosts;
     }
     default: {
