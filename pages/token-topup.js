@@ -1,16 +1,17 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import AppLayout from "../components/AppLayout/AppLayout";
 import { getAppProps } from "../utils/getAppProps";
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 export default function TokenTopup(props) {
+  const router = useRouter()
   const handleClick = async () => {
     const result = await fetch('/api/addTokens', {
       method: "POST"
     })
 
     const json = await result.json()
-    window.location.href = json.session.url
+    router.replace("/post/new")
   }
 
   return (
